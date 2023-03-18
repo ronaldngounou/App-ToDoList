@@ -12,22 +12,22 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
-let items = ["Read", "Study", "Sleep"];
-let workItems = [];
+const items = ["Read", "Study", "Sleep"];
+const workItems = [];
 
 app.get("/", function(req, res){
     
     //send allows to send a response from the server to the browser side
     //Do some calculations on the server side and then send the result back to the browser
 
-    let day = date.getDate();
+    const day = date.getDate();
 
     res.render("list", {listTitle: day, newListItemsArray: items}) //pass the ejs file with the key that exists in list
    
 });
 
 app.post("/", function(req, res){
-    let item = req.body.newItem;
+    const item = req.body.newItem;
     
     if (req.body.nameofList === "Work"){
         workItems.push(item);
@@ -38,7 +38,7 @@ app.post("/", function(req, res){
     }
 
     //A scope to redirect to the get request above, we do a redirect because 
-    //every time we send information, the variable are not known because of th spoce of the variables 
+    //every time we send information, the constiable are not known because of th spoce of the constiables 
 
 });
 
@@ -47,7 +47,7 @@ app.get("/work", function(req, res){
 });
 
 app.post("/work", function(req, res){
-    let item = req.body.newItem;
+    const item = req.body.newItem;
     workItems.push(item);
     res.redirect("/work");
 })
@@ -63,7 +63,7 @@ app.listen(3000, function(){
 
 
     //currentDay = today.getDay();
-    //let day = "";
+    //const day = "";
 
     // switch (currentDay) {
     //     case 0:
